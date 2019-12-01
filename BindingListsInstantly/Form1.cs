@@ -23,6 +23,7 @@ namespace BindingListsInstantly
             InitializeComponent();
 
             this.personRepo.ListBoxesToBeUpdate.Add(this.listBox);
+            this.personRepo.ListBoxesToBeUpdate.Add(this.listBox2);
 
             this.listBox.DisplayMember = "Person";
         }
@@ -30,6 +31,18 @@ namespace BindingListsInstantly
         private void addButton_Click(object sender, EventArgs e)
         {
             personRepo.AddElementWithUpdateProcess(new Person { Name = nameTextBox.Text, SurName = surNameTextBox.Text });
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            if (listBox.SelectedItem != null)
+            {
+                personRepo.DeleteElementWithUpdateProcess(listBox.SelectedIndex);
+            }
+            else if(listBox2.SelectedItem != null)
+            {
+                personRepo.DeleteElementWithUpdateProcess(listBox2.SelectedIndex);
+            }
         }
 
         private void PersonRepo_EventOfUpdate()
@@ -44,5 +57,7 @@ namespace BindingListsInstantly
                 }
             }
         }
+
+        
     }
 }

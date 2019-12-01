@@ -23,6 +23,13 @@ namespace BindingListsInstantly
 
             EventOfUpdate();
         }
+        public void DeleteElementWithUpdateProcess(int index)
+        {
+            PersonsRepo.RemoveAt(index);
+
+            EventOfUpdate();
+
+        }
         public List<ListBox> ListBoxesToBeUpdate { get; set; }
 
         public event DelegateOfUpdate EventOfUpdate;
